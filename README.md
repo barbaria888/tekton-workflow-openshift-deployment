@@ -67,6 +67,7 @@ flowchart LR
 
 **Workspace:** `output`
 **Storage:** `1Gi PVC`
+<img src="https://github.com/barbaria888/tekton-workflow-openshift-deployment/blob/main/images/oc-pipelines-console-pvc-details.png">
 
 ## Container
 
@@ -98,6 +99,7 @@ bin/setup.sh              # Local environment
 
 ## Delivery Model
 <img src="https://github.com/barbaria888/tekton-workflow-openshift-deployment/blob/main/images/oc-pipelines-oc-final.png">
+<img src="https://github.com/barbaria888/tekton-workflow-openshift-deployment/blob/main/images/oc-pipelines-oc-green.png">
 
 ```mermaid
 flowchart LR
