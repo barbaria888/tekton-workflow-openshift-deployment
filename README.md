@@ -105,4 +105,4 @@ flowchart LR
 ### References
 
 * **Implementation:** [GitHub Repository](https://github.com/barbaria888/tekton-workflow-openshift-deployment?utm_source=chatgpt.com)
-* **Walkthrough:** *When GitHub Actions Sync with OpenShift Pipelines: CI/CD* — Hashnode, 22 Nov 2025
+* **Walkthrough:** <a href="https://hardik0811arora.hashnode.dev/when-github-actions-sync-with-openshift-pipelines-cicd">*When GitHub Actions Sync with OpenShift Pipelines: CI/CD* — Hashnode, 22 Nov 2025 </a>
