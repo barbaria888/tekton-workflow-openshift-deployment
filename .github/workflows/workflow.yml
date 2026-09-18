@@ -3,15 +3,17 @@ name: CI workflow
 on:
   push:
     branches: ["main"]
-  paths:
-    - 'service/**'
-    - 'service/common/**'
-    - 'tests/**'
-    - 'bin/**'
-    - '!README.md'
+    paths:
+      - 'service/**'
+      - 'tests/**'
+      - 'bin/**'
   pull_request: 
     branches: ["main" ]
-
+    paths:
+      - 'service/**'
+      - 'tests/**'
+      - 'bin/**'
+        
 
 jobs:
   build:
@@ -20,7 +22,7 @@ jobs:
       image: python:3.9-slim
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Dependencies
         run: |
@@ -34,7 +36,7 @@ jobs:
       
       - name: Run unit tests with nose
         run: |
-          nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
+          nosetests -v --with-spec --spec-color --with-coverage --cover-package=service
       
       
     
