@@ -97,7 +97,7 @@ bin/setup.sh              # Local environment
 ```
 
 ## Delivery Model
-
+<img src="https://github.com/barbaria888/tekton-workflow-openshift-deployment/blob/main/images/oc-pipelines-oc-final.png">
 
 ```mermaid
 flowchart LR
