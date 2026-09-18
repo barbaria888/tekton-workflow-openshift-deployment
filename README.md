@@ -1,38 +1,108 @@
-# CI/CD Tools and Practices Final Project Template
+# GitHub Actions + OpenShift Pipelines (Tekton)
 
-This repository contains the template to be used for the Final Project for the Coursera course **CI/CD Tools and Practices**.
+> [!NOTE]
+> **Hybrid CI/CD:** GitHub Actions handles CI. OpenShift Pipelines (Tekton) handles Kubernetes-native delivery.
 
-## Usage
+## Architecture
 
-This repository is to be used as a template to create your own repository in your own GitHub account. No need to Fork it as it has been set up as a Template. This will avoid confusion when making Pull Requests in the future.
+```mermaid
+flowchart LR
+    DEV[Developer] --> GH[GitHub]
 
-From the GitHub **Code** page, press the green **Use this template** button to create your own repository from this template.
+    GH --> CI[GitHub Actions]
+    CI --> LINT[Flake8]
+    LINT --> TEST[Nose]
 
-Name your repo: `ci-cd-final-project`.
+    TEST --> TEK[Tekton]
+    TEK --> CLONE[Git Clone]
+    CLONE --> VALIDATE[Lint + Test]
+    VALIDATE --> BUILD[Buildah]
+    BUILD --> REG[Container Registry]
+    REG --> OCP[OpenShift]
 
-## Setup
-
-After entering the lab environment you will need to run the `setup.sh` script in the `./bin` folder to install the prerequisite software.
-
-```bash
-bash bin/setup.sh
+    OCP --> APP[Application]
 ```
 
-Then you must exit the shell and start a new one for the Python virtual environment to be activated.
+## CI
 
-```bash
-exit
+```mermaid
+flowchart LR
+    A[Push / PR] --> B[Checkout]
+    B --> C[Dependencies]
+    C --> D[Flake8]
+    D --> E[Nose + Coverage]
 ```
 
-## Tasks
+**Runtime:** `python:3.9-slim`
 
+## CD
 
-## License
+```mermaid
+flowchart TD
+    A[Tekton Pipeline]
+    A --> B[Workspace Cleanup]
+    B --> C[Source]
+    C --> D[Validation]
+    D --> E[Buildah]
+    E --> F[Push Image]
+    F --> G[OpenShift Deploy]
+```
 
-Licensed under the Apache License. See [LICENSE](/LICENSE)
+> [!NOTE]
+> The committed `.tekton/tasks.yml` contains the reusable **cleanup** and **Nose** tasks. The complete Tekton flow is documented in the accompanying implementation walkthrough.
 
-## Author
+## Shared Workspace
 
-Skills Network
+```mermaid
+flowchart LR
+    PVC[(oc-lab-pvc)] --> T1[Cleanup]
+    PVC --> T2[Clone]
+    PVC --> T3[Test]
+    PVC --> T4[Build]
+```
 
-## <h3 align="center"> © IBM Corporation 2023. All rights reserved. <h3/>
+**Workspace:** `output`
+**Storage:** `1Gi PVC`
+
+## Container
+
+```mermaid
+flowchart TD
+    A[python:3.9-slim]
+    A --> B[Install Dependencies]
+    B --> C[Copy Service]
+    C --> D[Create service User]
+    D --> E[Run as Non-Root]
+    E --> F[Gunicorn :8000]
+```
+
+## Repository
+
+```text
+.github/workflows/
+└── workflow.yml          # GitHub Actions CI
+
+.tekton/
+├── tasks.yml             # Tekton tasks
+└── README.md
+
+service/                  # Application
+tests/                    # Tests
+Dockerfile                # Runtime image
+bin/setup.sh              # Local environment
+```
+
+## Delivery Model
+
+```mermaid
+flowchart LR
+    SOURCE[Source] --> VALIDATE[Validate]
+    VALIDATE --> PACKAGE[Package]
+    PACKAGE --> DELIVER[Deliver]
+    DELIVER --> RUN[OpenShift]
+```
+
+### References
+
+* **Implementation:** [GitHub Repository](https://github.com/barbaria888/tekton-workflow-openshift-deployment?utm_source=chatgpt.com)
+* **Walkthrough:** *When GitHub Actions Sync with OpenShift Pipelines: CI/CD* — Hashnode, 22 Nov 2025
