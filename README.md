@@ -60,6 +60,7 @@ flowchart LR
     PVC --> T3[Test]
     PVC --> T4[Build]
 ```
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761993257371/594b05b4-6858-42e1-9c97-407771d84219.png">
 
 **Workspace:** `output`
 **Storage:** `1Gi PVC`
