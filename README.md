@@ -1,4 +1,9 @@
-# GitHub Actions + OpenShift Pipelines (Tekton)
+# GitHub Actions + OpenShift Pipelines on Tekton CD
+<div>
+<img alt="github-actions" height="60" src="https://camo.githubusercontent.com/8e53fdc2a5df470f09d96aa7fce050cf1668249476538dcd4968f99b5826b03c/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f676974687562616374696f6e732f676974687562616374696f6e732d6f726967696e616c2e737667">
+<img height="70" alt="tekton-cd" src="https://github.com/user-attachments/assets/596b5c47-3883-49fb-b8da-b2879ba73be5" />
+<img alt="openshift" src="https://camo.githubusercontent.com/dca99335c853eca1c45d0207eec8bedac56f329b45d05eb2b2dcf3ce213c4308/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f332f33612f4f70656e53686966742d4c6f676f547970652e737667" height="70">
+</div>
 
 > [!NOTE]
 > **Hybrid CI/CD:** GitHub Actions handles CI. OpenShift Pipelines (Tekton) handles Kubernetes-native delivery.
