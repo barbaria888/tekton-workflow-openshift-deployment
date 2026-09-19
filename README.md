@@ -9,7 +9,8 @@
 
 > [!NOTE]
 > **Hybrid CI/CD:** GitHub Actions handles CI. OpenShift Pipelines (Tekton) handles Kubernetes-native delivery.
-<img src="https://github.com/barbaria888/tekton-workflow-openshift-deployment/blob/main/images/ChatGPT%20Image%20Nov%201%2C%202025%2C%2004_35_13%20PM.png">
+
+<img src="https://github.com/barbaria888/tekton-workflow-openshift-deployment/blob/main/images/Screenshot%202026-09-19%20160904.png">
 
 ## Architecture
 
