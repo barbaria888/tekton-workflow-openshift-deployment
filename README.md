@@ -60,6 +60,13 @@ flowchart TD
     F --> G[OpenShift Deploy]
 ```
 
+<img width="400" height="200" alt="tekton pipelinerun" src="https://github.com/user-attachments/assets/df4e39db-7ae7-4374-b6d4-fc3bdf998410" />
+
+<blockquote>
+  <p>Tekton PipelineRun </p>
+</blockquote>
+
+
 > [!NOTE]
 > The committed `.tekton/tasks.yml` contains the reusable **cleanup** and **Nose** tasks. The complete Tekton flow is documented in the accompanying implementation walkthrough.
 
